@@ -5,7 +5,7 @@ from uuid import uuid4
  
 
 class BaseModel(object):
-    def __init__(self, id, created_at, updated_at):
+    def __init__(self, *args, **kwargs):
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
