@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+<<<<<<< HEAD
 """This module creates a Place class,Defines the Place class"""
 from models.base_model import BaseModel
 
@@ -21,6 +22,15 @@ class Place(BaseModel):
         amenity_ids (list): A list of Amenity ids.
     """
 
+=======
+"""This module creates the place class that inherits from BaseModel class"""
+
+from models.base_model import BaseModel
+
+class Place(BaseModel):
+    """Place class"""
+    
+>>>>>>> 68e17e9553bd6328a558c2906fa00edd5f05534a
     city_id = ""
     user_id = ""
     name = ""
