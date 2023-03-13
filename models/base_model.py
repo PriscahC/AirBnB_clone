@@ -3,11 +3,25 @@
 
 from datetime import datetime
 from uuid import uuid4
- 
+
 
 class BaseModel(object):
     """BaseModel Class for AirBnB Clone Project"""
     def __init__(self, *args, **kwargs):
+        """initializes the arguments for the BaseModel class
+        Args:
+            *args: arguments
+            **kwargs: keyword arguments"""
+        if kwargs:
+            for key, value in kwargs.items():
+                if key == 'created_at' or key == 'updated_at':
+                    value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
+                if key != '__class__':
+                    setattr(self, key, value)
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
@@ -18,7 +32,7 @@ class BaseModel(object):
                                      self.id, self.__dict__)
 
     def save(self):
-        """updated_at' attribute with the current datetime"""
+        "'updated_at' attribute with the current datetime"
         self.updated_at = datetime.now()
 
     def to_dict(self):
